@@ -1,0 +1,25 @@
+/* custom css style / overwrite bootstrap css */ 
+.login-input.is-invalid {
+  background-image: none !important;
+  padding-right: 0.75rem !important;
+}
+
+.mh-24 {
+  min-height: 1.5rem;
+}
+
+.custom-fr {
+  color: #300D38
+}
+
+.fr-button {
+  background-color: transparent;
+  border-color: #FBA919;
+  color: #300D38;
+}
+
+.fr-button:hover {
+  background-color: #300D38;
+  border-color: #300D38;
+  color:#FBA919;
+}
