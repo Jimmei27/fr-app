@@ -3,13 +3,13 @@ import { Dog } from '../utils/interfaces'
 
 interface SearchDogCardProps {
     dog: Dog
-    onSelectDogBreed: (id: string) => void
+    onSelectDogBreed: (id: string, breed: string) => void
 }
 
-const SearchDogCard: React.FC<SearchDogCardProps> = ({dog}) => {
+const SearchDogCard: React.FC<SearchDogCardProps> = ({dog, onSelectDogBreed}) => {
     return (
-        <Col xs={12} sm={6} md={4} lg={3} xl={2}>
-            <Card className='h-100'>
+        <Col onClick={() => onSelectDogBreed(dog.id, dog.breed)} data-testid={`${dog.name}-card`}>
+            <Card className='h-100' style={{ minWidth: '7rem'}}>
                 <Card.Img variant='top' src={dog.img} style={{objectFit: 'cover', height: '12.5rem'}}/>
                 <Card.Body>
                     <Card.Title>{dog.name}</Card.Title>

@@ -19,7 +19,7 @@ export const logout = async () => {
 }
 
 // Dog Breeds
-export const getBreeds = async (): Promise<Record<string, string>> => {
+export const getBreeds = async (): Promise<Record<string, string>[]> => {
     const response = await apiClient.get('/dogs/breeds')
     return response.data
 }
@@ -28,8 +28,14 @@ export const getBreeds = async (): Promise<Record<string, string>> => {
 export const searchDogs = async (filters: { breeds?: string[]; zipCodes?: string[]; ageMin?: number; ageMax?: number; size?: number; from?: string; sort?: string}) => {
     const params = new URLSearchParams()
 
+    console.log('test 77 ' + JSON.stringify(filters.ageMin))
     if (filters.breeds) params.append('breeds', filters.breeds.join(','));
-
+    if (filters.from) params.append('from', filters.from);
+    if (filters.size) params.append('size', filters.size.toString());
+    if (filters.ageMin) params.append('ageMin', filters.ageMin.toString());
+    if (filters.ageMax) params.append('ageMax', filters.ageMax.toString());
+    if (filters.zipCodes) params.append('zipCodes', filters.zipCodes.toString());
+    console.log('test 76 ' + JSON.stringify(params))
     const response = await apiClient.get(`/dogs/search?${params.toString()}`)
     return response.data
 }
@@ -38,5 +44,11 @@ export const searchDogs = async (filters: { breeds?: string[]; zipCodes?: string
 export const getDogs = async (data: string[]) => {
     if (!data.length) return []
     const response = await apiClient.post('/dogs', data);
+    return response.data
+}
+
+// Match Dog
+export const matchDog = async (data: string[]) => {
+    const response = await apiClient.post('/dogs/match', data);
     return response.data
 }

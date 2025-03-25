@@ -1,5 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getBreeds, getDogs, login, logout, searchDogs } from "../api/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getBreeds, getDogs, login, logout, matchDog, searchDogs } from "../api/api";
 
 export const useLogin = () => {
     return useMutation({
@@ -22,16 +22,14 @@ export const useGetBreeds = () => {
 
 // combine search and get
 export const useSearchDogs = (filters: { breeds?: string[]; zipCodes?: string[]; ageMin?: number; ageMax?: number; size?: number; from?: string; sort?: string}) => {
-    const queryClient = useQueryClient()
 
     // search
     const { data: dogId, isLoading: isLoadingDogIg, refetch } = useQuery({
         queryKey: ['dogIds', filters],
         queryFn: () => searchDogs(filters)
     })
-
+    
     // get dogs
-
     const { data: dogDatas, isLoading: isLoadingDogs } = useQuery({
         queryKey: ['dogs', dogId?.resultIds || []],
         queryFn: () => getDogs(dogId?.resultIds || []),
@@ -43,4 +41,16 @@ export const useSearchDogs = (filters: { breeds?: string[]; zipCodes?: string[];
         isLoading: isLoadingDogIg || isLoadingDogs,
         refetch
     }
+}
+
+export const useGetDogs = () => {
+    return useMutation({
+        mutationFn: getDogs
+    })
+}
+
+export const useMatchDog = () => {
+    return useMutation({
+        mutationFn: matchDog
+    })
 }

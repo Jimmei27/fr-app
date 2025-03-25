@@ -21,10 +21,10 @@ const LoginView = () => {
         if (isSuccess){
             navigate('/search')
         }
-    }, [isSuccess])
+    }, [isSuccess, navigate])
 
     const validateForm = () => {
-        let errors: FormErrorFields = {}
+        const errors: FormErrorFields = {}
         if (!name.trim()) {
             errors.name = 'Name is required'
         }
@@ -76,7 +76,7 @@ const LoginView = () => {
                                 <Form.Control.Feedback type='invalid' className='d-block text-start'>{formErrors.email}</Form.Control.Feedback>
                             </div>
                         </Form.Group>
-                        <Button type='submit' variant='outline-warning' className="w-50 rounded-pill">
+                        <Button type='submit' variant='outline-warning' className="w-100 rounded-pill">
                             Login
                         </Button>
                     </Form>
