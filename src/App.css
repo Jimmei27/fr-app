@@ -1,4 +1,4 @@
-/* custom css style / overwrite bootstrap css */ 
+/* custom css style / overwrite bootstrap css */
 .login-input.is-invalid {
   background-image: none !important;
   padding-right: 0.75rem !important;
@@ -9,17 +9,17 @@
 }
 
 .custom-fr {
-  color: #300D38
+  color: #300d38;
 }
 
 .fr-button {
   background-color: transparent;
-  border-color: #FBA919;
-  color: #300D38;
+  border-color: #fba919;
+  color: #300d38;
 }
 
 .fr-button:hover {
-  background-color: #300D38;
-  border-color: #300D38;
-  color:#FBA919;
+  background-color: #300d38;
+  border-color: #300d38;
+  color: #fba919;
 }

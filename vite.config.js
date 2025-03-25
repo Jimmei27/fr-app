@@ -5,18 +5,19 @@ import react from '@vitejs/plugin-react';
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 export default defineConfig({
-    plugins: [react()],
-    build: {
-        outDir: 'build', // Ensure this is pointing to the right directory
+  plugins: [react()],
+  base: '/fr-app/',
+  build: {
+    outDir: 'build',
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './vitest.setup.ts',
+  },
+  resolve: {
+    alias: {
+      '~/': path.join(__dirname, 'src/'),
     },
-    test: {
-        globals: true,
-        environment: 'jsdom',
-        setupFiles: './vitest.setup.ts',
-    },
-    resolve: {
-        alias: {
-            '~/': path.join(__dirname, 'src/'),
-        },
-    },
+  },
 });

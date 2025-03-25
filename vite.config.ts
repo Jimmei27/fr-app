@@ -8,8 +8,9 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
+  base: '/fr-app/',
   build: {
-    outDir: 'build', // Ensure this is pointing to the right directory
+    outDir: 'build',
   },
   test: {
     globals: true,

@@ -7,7 +7,6 @@ import { vi } from 'vitest';
 const mockHandleSort = vi.fn();
 
 describe('SortDropdown', () => {
-
   beforeEach(() => {
     mockHandleSort.mockClear();
   });
