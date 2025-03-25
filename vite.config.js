@@ -6,10 +6,13 @@ var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 export default defineConfig({
     plugins: [react()],
+    build: {
+        outDir: 'build', // Ensure this is pointing to the right directory
+    },
     test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: './src/test/setup.ts',
+        setupFiles: './vitest.setup.ts',
     },
     resolve: {
         alias: {

@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import PagePagination from '../PagePagination';
-import { vi } from 'vitest'; // Mocking functions in Vitest
+import { vi } from 'vitest';
 
 describe('PagePagination', () => {
 
